@@ -78,10 +78,13 @@ Each day can be marked **"going to campus: yes/no"**.
 Example: in-person class at 9:00 → 9:00 − 33 min = 8:27, which is in the window,
 so leave at 8:07 → wake at 7:37 → bed at 11:37 PM the night before.
 
-Not decided yet (ask me before building):
-- Should a day with in-person events default to "yes" and an online-only day
-  default to "no"?
-- What should the plan show on a day with no events?
+**Defaults:**
+- Day has an in-person event → "going to campus" defaults to **yes**.
+- Day has only online events → **ask the user** "yes or no".
+- Day has no events → no plan; show the user's **sleep log status** instead,
+  with a button to **add an event** if something comes up.
+
+The user can always add an event to any day.
 
 ## Later (not MVP)
 
@@ -98,9 +101,11 @@ Don't build any of these until the MVP is done and I ask.
 
 ## How to work with me (I'm learning)
 
-- **Explain every file you create or change** in plain language: what it is,
-  why it exists, and how it connects to the rest of the app. Assume I'm new to
+- **Explain every file you create or change** in simple English, in one
+  sentence if possible: what it does and why it's there. Assume I'm new to
   React and Vite.
+- **Keep it simple.** Pick the simplest way that works. No extra features or
+  clever tricks.
 - **Keep changes small.** Do one step at a time, so each change is easy to read
   and test. Don't do big refactors or touch many files in one go.
 - **Prefer simple code I can explain.** Use plain React (useState, useEffect)
@@ -123,7 +128,8 @@ Don't build any of these until the MVP is done and I ask.
 
 ## Current status
 
-- Only this CLAUDE.md exists. The app has **not** been scaffolded yet.
+- CLAUDE.md and README.md (the graded spec) exist. The app has **not** been
+  scaffolded yet. Keep README.md in sync if the planning rules change.
 - Don't scaffold or create app files until I ask.
 
 ## Commands
