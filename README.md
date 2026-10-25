@@ -58,6 +58,13 @@ A "Sleep stats" tab shows the last 7 nights:
 Sleep is logged by hand. A web app can't read the phone's sleep sensors, so
 fully automatic tracking would need a native app.
 
+### 4. First-time demo
+
+The first time someone opens the app, it shows a demo filled with a sample
+week of classes and sleep, so they can see the plan and stats right away. A
+**Skip demo** button switches to their own empty app. Demo data is never
+saved, so it can't mix with real data. A **View demo** link brings it back.
+
 ## How the plan is calculated
 
 **Settings:**

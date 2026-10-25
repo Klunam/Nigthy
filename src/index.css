@@ -97,6 +97,25 @@ button.link {
   font-weight: 600;
 }
 
+/* Demo: a notice at the top and a big Skip button at the bottom. */
+.demo-banner {
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+
+.skip-demo {
+  width: 100%;
+  padding: 12px;
+  background: var(--accent);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.footer {
+  text-align: center;
+}
+
 /* Plan / Sleep stats switch. */
 .tabs {
   display: flex;

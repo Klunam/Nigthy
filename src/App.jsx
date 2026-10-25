@@ -1,28 +1,64 @@
-// The main screen. It holds the events and campus answers, saves them,
-// and shows the add-event form plus one card per day.
+// The main screen. It holds the events, campus answers, and sleep log, saves
+// them, and switches between the Plan and Sleep stats pages. On the first
+// visit it shows a demo with sample data instead.
 import { useEffect, useState } from 'react'
 import DayCard from './DayCard.jsx'
 import EventForm from './EventForm.jsx'
 import SleepLog from './SleepLog.jsx'
 import SleepStats from './SleepStats.jsx'
+import { DEMO_CAMPUS, DEMO_EVENTS, DEMO_SLEEP } from './demo.js'
 import { DAYS } from './plan.js'
 import { describeStatus } from './sleep.js'
 import { load, save } from './storage.js'
 
+// First visit = the demo hasn't been seen and nothing has been saved yet
+// (so people already using the app don't get the demo).
+const firstVisit =
+  !load('nigthy-demo-seen', false) &&
+  load('nigthy-events', []).length === 0 &&
+  load('nigthy-sleep', []).length === 0
+
 function App() {
   // Which page is showing: "plan" or "stats".
   const [page, setPage] = useState('plan')
-  // Start from whatever was saved last time (or empty).
-  const [events, setEvents] = useState(() => load('nigthy-events', []))
+  // true while the demo is showing.
+  const [demo, setDemo] = useState(firstVisit)
+  // Start from the demo data, or from whatever was saved last time.
+  const [events, setEvents] = useState(() => (firstVisit ? DEMO_EVENTS : load('nigthy-events', [])))
   // { Mon: true, Wed: false, ... } — a day missing here hasn't been answered.
-  const [campus, setCampus] = useState(() => load('nigthy-campus', {}))
+  const [campus, setCampus] = useState(() => (firstVisit ? DEMO_CAMPUS : load('nigthy-campus', {})))
   // [{ date: "2026-10-24", bedTime: "23:30", wakeTime: "07:30" }, ...]
-  const [sleepLog, setSleepLog] = useState(() => load('nigthy-sleep', []))
+  const [sleepLog, setSleepLog] = useState(() => (firstVisit ? DEMO_SLEEP : load('nigthy-sleep', [])))
 
-  // Save again whenever these change.
-  useEffect(() => save('nigthy-events', events), [events])
-  useEffect(() => save('nigthy-campus', campus), [campus])
-  useEffect(() => save('nigthy-sleep', sleepLog), [sleepLog])
+  // Save again whenever these change, but never save demo data.
+  useEffect(() => {
+    if (!demo) save('nigthy-events', events)
+  }, [events, demo])
+  useEffect(() => {
+    if (!demo) save('nigthy-campus', campus)
+  }, [campus, demo])
+  useEffect(() => {
+    if (!demo) save('nigthy-sleep', sleepLog)
+  }, [sleepLog, demo])
+
+  // Leave the demo: remember it was seen and switch to the real saved data.
+  function skipDemo() {
+    save('nigthy-demo-seen', true)
+    setEvents(load('nigthy-events', []))
+    setCampus(load('nigthy-campus', {}))
+    setSleepLog(load('nigthy-sleep', []))
+    setDemo(false)
+    setPage('plan')
+  }
+
+  // Show the demo again (the real data stays saved and comes back on skip).
+  function showDemo() {
+    setEvents(DEMO_EVENTS)
+    setCampus(DEMO_CAMPUS)
+    setSleepLog(DEMO_SLEEP)
+    setDemo(true)
+    setPage('plan')
+  }
 
   function addEvent(event) {
     setEvents([...events, { ...event, id: Date.now() }])
@@ -49,6 +85,12 @@ function App() {
     <main>
       <h1>Nigthy</h1>
       <p className="muted">Your sleep, wake, and leave times, based on your schedule.</p>
+
+      {demo && (
+        <p className="demo-banner">
+          Demo with sample data. Look around and try both pages. Nothing here is saved.
+        </p>
+      )}
 
       <nav className="tabs">
         <button aria-pressed={page === 'plan'} onClick={() => setPage('plan')}>
@@ -79,6 +121,18 @@ function App() {
             />
           ))}
         </>
+      )}
+
+      {demo ? (
+        <button className="skip-demo" onClick={skipDemo}>
+          Skip demo
+        </button>
+      ) : (
+        <p className="muted footer">
+          <button className="link" onClick={showDemo}>
+            View demo
+          </button>
+        </p>
       )}
     </main>
   )
