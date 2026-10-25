@@ -26,11 +26,15 @@ function SleepStats({ log }) {
   return (
     <>
       <section className="card">
-        <h2>This week</h2>
+        <h2>Last 7 nights</h2>
         <div className="tiles">
           <div className="tile">
-            <span className="muted">Average sleep</span>
+            <span className="muted">Average per night</span>
             <strong>{formatDuration(summary.average)}</strong>
+          </div>
+          <div className="tile">
+            <span className="muted">Total slept</span>
+            <strong>{formatDuration(summary.total)}</strong>
           </div>
           <div className="tile">
             <span className="muted">Nights at 8h+</span>
@@ -48,20 +52,37 @@ function SleepStats({ log }) {
 
       <section className="card">
         <h2>Hours slept</h2>
+        <div className="legend">
+          <span>
+            <i className="swatch" /> 8h or more
+          </span>
+          <span>
+            <i className="swatch short" /> Under 8h
+          </span>
+        </div>
+
         <div className="chart" role="img" aria-label="Bar chart of hours slept for the last 7 nights">
           {/* Dashed line at the sleep goal. */}
           <div className="goal-line" style={{ bottom: `${goalPercent}%` }}>
             <span>{SETTINGS.sleepGoal / 60}h goal</span>
           </div>
 
-          {nights.map((entry) => (
-            <div
-              key={entry.date}
-              className="bar"
-              style={{ height: `${(minutesSlept(entry) / chartTop) * 100}%` }}
-              title={`${entry.date}: ${formatDuration(minutesSlept(entry))}`}
-            />
-          ))}
+          {nights.map((entry) => {
+            const slept = minutesSlept(entry)
+            // Short nights get a different color so they stand out.
+            const isShort = slept < SETTINGS.sleepGoal
+            return (
+              <div
+                key={entry.date}
+                className={isShort ? 'bar short' : 'bar'}
+                style={{ height: `${(slept / chartTop) * 100}%` }}
+                title={`${entry.date}: ${formatDuration(slept)}`}
+              >
+                {/* Hours on the bar, e.g. 7.5h, so it's readable on a phone. */}
+                <span>{Math.round((slept / 60) * 10) / 10}h</span>
+              </div>
+            )
+          })}
         </div>
         <div className="chart-labels">
           {nights.map((entry) => (

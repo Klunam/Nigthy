@@ -19,8 +19,8 @@ export function recentNights(log) {
   return [...log].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 7)
 }
 
-// Numbers for the last 7 nights: how many, the average, and how many hit the
-// goal. Returns null if nothing is logged.
+// Numbers for the last 7 nights: how many, the total and average sleep, and
+// how many hit the goal. Returns null if nothing is logged.
 export function weekSummary(log) {
   const recent = recentNights(log)
   if (recent.length === 0) return null
@@ -28,6 +28,7 @@ export function weekSummary(log) {
   const total = recent.reduce((sum, entry) => sum + minutesSlept(entry), 0)
   return {
     count: recent.length,
+    total,
     average: Math.round(total / recent.length),
     hitGoal: recent.filter((entry) => minutesSlept(entry) >= SETTINGS.sleepGoal).length,
   }

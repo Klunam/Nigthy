@@ -142,8 +142,11 @@ Don't build any of these until the MVP is done and I ask.
   - `src/SleepLog.jsx`: log form, 7-night summary, recent nights list
   - saved under localStorage key `nigthy-sleep`, one entry per date
   - no-event days show the 7-night summary
-- Sleep stats page works: `src/SleepStats.jsx` (summary tiles, CSS bar
-  chart of last 7 nights with an 8h goal line, table). `App.jsx` switches
+- Sleep stats page works: `src/SleepStats.jsx` (average / total / nights at
+  8h+ tiles, CSS bar chart of last 7 nights with an 8h goal line, short nights
+  in amber with a legend and hours on each bar, table).
+- Colors live as CSS variables at the top of `src/index.css` (midnight blue
+  theme). Chart colors were checked for contrast and colorblind safety. `App.jsx` switches
   between "plan" and "stats" with a `page` state (no router).
 - Not built yet: PWA setup (installable on Android) and deploying.
 - Idea for later: one-tap "Going to bed" / "I'm awake" buttons to make
