@@ -4,11 +4,14 @@ import { useEffect, useState } from 'react'
 import DayCard from './DayCard.jsx'
 import EventForm from './EventForm.jsx'
 import SleepLog from './SleepLog.jsx'
+import SleepStats from './SleepStats.jsx'
 import { DAYS } from './plan.js'
 import { describeStatus } from './sleep.js'
 import { load, save } from './storage.js'
 
 function App() {
+  // Which page is showing: "plan" or "stats".
+  const [page, setPage] = useState('plan')
   // Start from whatever was saved last time (or empty).
   const [events, setEvents] = useState(() => load('nigthy-events', []))
   // { Mon: true, Wed: false, ... } — a day missing here hasn't been answered.
@@ -47,21 +50,36 @@ function App() {
       <h1>Nigthy</h1>
       <p className="muted">Your sleep, wake, and leave times, based on your schedule.</p>
 
-      <SleepLog log={sleepLog} onSave={saveNight} onDelete={deleteNight} />
+      <nav className="tabs">
+        <button aria-pressed={page === 'plan'} onClick={() => setPage('plan')}>
+          Plan
+        </button>
+        <button aria-pressed={page === 'stats'} onClick={() => setPage('stats')}>
+          Sleep stats
+        </button>
+      </nav>
 
-      <EventForm onAdd={addEvent} />
+      {page === 'stats' ? (
+        <SleepStats log={sleepLog} />
+      ) : (
+        <>
+          <SleepLog log={sleepLog} onSave={saveNight} onDelete={deleteNight} />
 
-      {DAYS.map((day) => (
-        <DayCard
-          key={day}
-          day={day}
-          events={events.filter((event) => event.day === day)}
-          goingToCampus={campus[day]}
-          onCampusChange={(value) => setGoingToCampus(day, value)}
-          onDelete={deleteEvent}
-          sleepStatus={describeStatus(sleepLog)}
-        />
-      ))}
+          <EventForm onAdd={addEvent} />
+
+          {DAYS.map((day) => (
+            <DayCard
+              key={day}
+              day={day}
+              events={events.filter((event) => event.day === day)}
+              goingToCampus={campus[day]}
+              onCampusChange={(value) => setGoingToCampus(day, value)}
+              onDelete={deleteEvent}
+              sleepStatus={describeStatus(sleepLog)}
+            />
+          ))}
+        </>
+      )}
     </main>
   )
 }

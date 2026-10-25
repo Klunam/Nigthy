@@ -19,16 +19,28 @@ export function recentNights(log) {
   return [...log].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 7)
 }
 
-// One-line summary, e.g. "Last 3 nights: average 7h 20m, 1 of 3 hit the 8h goal."
-export function describeStatus(log) {
+// Numbers for the last 7 nights: how many, the average, and how many hit the
+// goal. Returns null if nothing is logged.
+export function weekSummary(log) {
   const recent = recentNights(log)
-  if (recent.length === 0) return 'No nights logged yet.'
+  if (recent.length === 0) return null
 
   const total = recent.reduce((sum, entry) => sum + minutesSlept(entry), 0)
-  const average = Math.round(total / recent.length)
-  const hitGoal = recent.filter((entry) => minutesSlept(entry) >= SETTINGS.sleepGoal).length
-  const goalHours = SETTINGS.sleepGoal / 60
-  const nights = recent.length === 1 ? 'night' : 'nights'
+  return {
+    count: recent.length,
+    average: Math.round(total / recent.length),
+    hitGoal: recent.filter((entry) => minutesSlept(entry) >= SETTINGS.sleepGoal).length,
+  }
+}
 
-  return `Last ${recent.length} ${nights}: average ${formatDuration(average)}, ${hitGoal} of ${recent.length} hit the ${goalHours}h goal.`
+// One-line summary, e.g. "Last 3 nights: average 7h 20m, 1 of 3 hit the 8h goal."
+export function describeStatus(log) {
+  const summary = weekSummary(log)
+  if (!summary) return 'No nights logged yet.'
+
+  const { count, average, hitGoal } = summary
+  const goalHours = SETTINGS.sleepGoal / 60
+  const nights = count === 1 ? 'night' : 'nights'
+
+  return `Last ${count} ${nights}: average ${formatDuration(average)}, ${hitGoal} of ${count} hit the ${goalHours}h goal.`
 }

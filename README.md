@@ -40,6 +40,15 @@ nights: the average and how many hit the 8-hour goal. Logging the same date
 again replaces that night. The log is saved on the device, so it's still there
 after closing the app.
 
+### 3. Sleep stats page
+
+A "Sleep stats" tab shows the last 7 nights: the average sleep, how many nights
+hit 8 hours, a bar chart of hours slept with a line at the 8-hour goal, and a
+table with each night's bed, wake, and total time.
+
+Sleep is logged by hand. A web app can't read the phone's sleep sensors, so
+fully automatic tracking would need a native app.
+
 ## How the plan is calculated
 
 **Settings:**
