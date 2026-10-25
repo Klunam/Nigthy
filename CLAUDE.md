@@ -131,10 +131,14 @@ Don't build any of these until the MVP is done and I ask.
 ## Current status
 
 - README.md is the graded spec. Keep it in sync if the planning rules change.
-- The Vite + React app is set up with a placeholder screen (`src/App.jsx`).
-- `src/plan.js` has the plan math (`planDay`, `formatTime`, `SETTINGS`).
-  It is not connected to the screen yet.
-- Not built yet: the event entry/plan screen, the sleep log, and PWA setup.
+- MVP feature 1 (daily plan) works:
+  - `src/plan.js`: plan math (`planDay`, `formatTime`, `SETTINGS`, `DAYS`)
+  - `src/storage.js`: `load`/`save` to localStorage (keys `nigthy-events`,
+    `nigthy-campus`)
+  - `src/App.jsx`: holds events + campus answers; `src/EventForm.jsx` adds
+    events; `src/DayCard.jsx` shows one day and its plan
+- Not built yet: the sleep log (no-event days show a placeholder for it) and
+  PWA setup.
 
 ## Commands
 

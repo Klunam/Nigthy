@@ -11,6 +11,8 @@ export const SETTINGS = {
   delayWindowEnd: 9 * 60 + 30, // 9:30 AM
 }
 
+export const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+
 const MINUTES_IN_DAY = 24 * 60
 
 // "09:30" -> 570 (minutes since midnight)

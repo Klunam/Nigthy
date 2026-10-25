@@ -11,3 +11,74 @@ main {
   margin: 0 auto;
   padding: 16px;
 }
+
+h2 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+
+.muted {
+  color: #9a9cb8;
+}
+
+/* Each day and the form sit in a rounded box. */
+.card {
+  background: #1a1e3a;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.event-form label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+select,
+input,
+button {
+  font: inherit;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #3a3f6b;
+  background: #262b52;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Highlight the chosen Yes/No answer. */
+button[aria-pressed='true'] {
+  background: #6c63ff;
+  border-color: #6c63ff;
+}
+
+button.link {
+  border: none;
+  background: none;
+  color: #9a9cb8;
+  text-decoration: underline;
+  margin-left: 8px;
+}
+
+.events {
+  padding-left: 18px;
+  margin: 0 0 8px;
+}
+
+/* The plan: label on the left, time on the right. */
+.plan {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 16px;
+  margin: 0;
+}
+
+.plan dd {
+  margin: 0;
+  font-weight: 600;
+}
