@@ -8,20 +8,27 @@ Guidance for Claude Code when working in this repository.
 when to **sleep**, **wake**, and **leave** each day based on their class schedule
 and commute time.
 
-- **Type:** class project, due **Monday, Oct 26, 2026**
-- **Graded on:**
-  1. A clear README spec
-  2. A working MVP slice
-  3. The student being able to explain every line of the code
+- **Type:** CMP 464/343 Product 1, due **Monday, Nov 2, 2026**.
+  Presentations in class Mon Nov 2 / Wed Nov 4 (~5 min + questions).
+- **Graded on (equal thirds):**
+  1. **Spec:** README.md follows the course template (About me, Problem
+     statement, Existing solutions, Features with MVP/Later/Not doing, Tech
+     stack with reasons + Mermaid diagram, Open questions) and matches what
+     was built
+  2. **Repo + demo:** real code, many small commits, no secrets, a Demo
+     section (live URL + screenshots in `docs/screenshots/`)
+  3. **Code review:** the student explains the code, design choices, and AI use
 
-Because of #3, clarity matters more than cleverness.
+Because of #3, clarity matters more than cleverness. Keep README.md in sync
+with any feature change. The spec sections use the student's own words from
+their draft; don't rewrite their voice.
 
 ## Stack
 
 - **Vite + React** web app (JavaScript)
 - **PWA**, installable on an Android phone (web app manifest + service worker)
-- **localStorage** for the sleep log. No backend, no database.
-- Deployed to a live URL later (host TBD). Don't add deploy config until asked.
+- **localStorage** for all data. No backend, no database.
+- Hosted on Netlify (see Current status).
 
 ## MVP scope
 

@@ -84,13 +84,14 @@ function SleepStats({ log, events, campus }) {
           <span>
             <i className="swatch short" /> Under 8h
           </span>
+          <span>
+            <i className="swatch goal" /> {SETTINGS.sleepGoal / 60}h goal
+          </span>
         </div>
 
         <div className="chart" role="img" aria-label="Bar chart of hours slept for the last 7 nights">
           {/* Dashed line at the sleep goal. */}
-          <div className="goal-line" style={{ bottom: `${goalPercent}%` }}>
-            <span>{SETTINGS.sleepGoal / 60}h goal</span>
-          </div>
+          <div className="goal-line" style={{ bottom: `${goalPercent}%` }} />
 
           {nights.map((entry) => {
             const slept = minutesSlept(entry)

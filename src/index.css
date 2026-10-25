@@ -194,6 +194,16 @@ button:disabled {
   background: var(--short);
 }
 
+/* A short dashed line, matching the goal line in the chart. */
+.swatch.goal {
+  height: 0;
+  width: 14px;
+  border-radius: 0;
+  background: none;
+  border-top: 1px dashed var(--muted);
+  vertical-align: middle;
+}
+
 /* Bar chart: each bar's height is a percent set in SleepStats.jsx. */
 .chart {
   position: relative;
@@ -204,11 +214,14 @@ button:disabled {
   border-bottom: 1px solid var(--border);
 }
 
+/* Hours label sits at the bottom of each bar, away from the goal line. */
 .bar {
   flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   background: var(--accent);
   border-radius: 4px 4px 0 0;
-  text-align: center;
 }
 
 .bar.short {
@@ -216,8 +229,7 @@ button:disabled {
 }
 
 .bar span {
-  display: block;
-  padding-top: 2px;
+  padding-bottom: 4px;
   font-size: 0.7rem;
   font-weight: 600;
   color: var(--on-bar);
@@ -228,14 +240,6 @@ button:disabled {
   left: 0;
   right: 0;
   border-top: 1px dashed var(--muted);
-}
-
-.goal-line span {
-  position: absolute;
-  right: 0;
-  bottom: 2px;
-  font-size: 0.75rem;
-  color: var(--muted);
 }
 
 .chart-labels {
