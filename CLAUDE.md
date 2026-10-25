@@ -94,6 +94,8 @@ The user can always add an event to any day.
   syllabus.
 - **Gemini suggestions:** on online days, suggest better sleep habits and what
   to work on in the free time before online classes, based on the syllabus.
+- **Google Maps commute time:** use real transit times from home to Lehman
+  instead of the fixed 33 min. Needs an API key, so same server rule as below.
 - **API key warning:** a Gemini API key must **never** go in the React code or
   in a `VITE_` env variable, since those are shipped to the browser and are
   public. Calling Gemini will need a small server or serverless function that
