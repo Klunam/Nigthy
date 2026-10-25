@@ -65,8 +65,10 @@ Each day can be marked **"going to campus: yes/no"**.
   - leave time = event start − commute (33 min)
   - if that leave time is between **6:00 and 9:30 AM**, subtract the
     **20 min delay buffer** too (early morning trains run about 20 min late)
-  - wake time = leave time − get-ready (30 min)
+  - wake time = leave time − get-ready (30 min), or earlier if an online
+    event starts first (wake must be ≥ 30 min before the day's first event)
   - bedtime = wake time − sleep goal (8 h)
+  - online-only day marked "yes": plan from the earliest online event
 - **No:** no commute, buffer, or leave time is calculated. Plan from the
   earliest event that day (online):
   - wake time = event start − get-ready (30 min)
@@ -130,7 +132,9 @@ Don't build any of these until the MVP is done and I ask.
 
 - README.md is the graded spec. Keep it in sync if the planning rules change.
 - The Vite + React app is set up with a placeholder screen (`src/App.jsx`).
-  PWA setup, the daily plan, and the sleep log are not built yet.
+- `src/plan.js` has the plan math (`planDay`, `formatTime`, `SETTINGS`).
+  It is not connected to the screen yet.
+- Not built yet: the event entry/plan screen, the sleep log, and PWA setup.
 
 ## Commands
 

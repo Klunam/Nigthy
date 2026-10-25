@@ -61,8 +61,12 @@ the device, so it's still there after closing the app.
 1. Leave time = event start − 33 min commute
 2. If that leave time is between 6:00 and 9:30 AM, leave 20 min earlier for
    train delays
-3. Wake time = leave time − 30 min to get ready
+3. Wake time = leave time − 30 min to get ready, or earlier if an online
+   event starts before that
 4. Bedtime = wake time − 8 hours
+
+If an online-only day is marked "yes", the plan starts from the earliest
+online event instead.
 
 **On a home day (no):** no leave time. The plan starts from the earliest event.
 
