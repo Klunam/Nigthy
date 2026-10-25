@@ -162,7 +162,11 @@ Don't build any of these until the MVP is done and I ask.
     Bump `CACHE` (e.g. `nigthy-v2`) if caching ever needs a fresh start.
   - `public/icon.svg` is the source icon; `icon-192.png` / `icon-512.png` were
     made from it with `sips` (macOS)
-- Not built yet: deploying to a live URL (install on Android needs https).
+- Deployed on Netlify: https://vermillion-bubblegum-896cf3.netlify.app
+  - GitHub repo: https://github.com/Klunam/Nigthy (public, branch `main`)
+  - Netlify rebuilds on every push to `main` (`npm run build` → `dist`)
+  - `.nvmrc` pins Node 22; `public/_headers` sets the manifest content type
+- Pushing to `main` publishes to the live site, so only push when asked.
 - Idea for later: one-tap "Going to bed" / "I'm awake" buttons to make
   logging faster. Automatic tracking isn't possible from a web app.
 

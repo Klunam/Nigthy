@@ -118,7 +118,8 @@ online event instead.
   app's files on the phone.
 - **localStorage**: saves events and the sleep log in the browser, with no
   server or account needed.
-- Deployed to a live URL (link to be added).
+- **Netlify**: hosts the app for free and redeploys it every time code is
+  pushed to GitHub.
 
 ## Out of scope (future ideas)
 
@@ -135,8 +136,17 @@ server, and the code contains no API keys.
 
 ## Running locally
 
-_Coming soon, once the app is set up._
+Needs Node 22.
+
+```
+npm install      # download the libraries (once)
+npm run dev      # start the app at http://localhost:5173
+npm run build    # make the final version in dist/
+```
 
 ## Live demo
 
-_Link coming soon._
+**https://vermillion-bubblegum-896cf3.netlify.app**
+
+To install on Android: open the link in Chrome, tap **⋮**, then
+**Install app** (or **Add to Home screen**).
