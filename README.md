@@ -42,9 +42,18 @@ after closing the app.
 
 ### 3. Sleep stats page
 
-A "Sleep stats" tab shows the last 7 nights: the average sleep, how many nights
-hit 8 hours, a bar chart of hours slept with a line at the 8-hour goal, and a
-table with each night's bed, wake, and total time.
+A "Sleep stats" tab shows the last 7 nights:
+
+- **Average per night** and **total slept**
+- **Nights at 8h+**
+- **Sleep debt:** how far the short nights fell below 8 hours, added up. Long
+  nights don't cancel out short ones. Example: 8h, 5h, 9h → 3h of debt.
+- **Bedtime vs plan:** how much earlier or later the user went to bed than the
+  plan said, per night and on average. Example: planned 11:37 PM, went to bed
+  at 1:00 AM → "1h 23m late". Days with no plan show "–".
+- A bar chart of hours slept, with a line at the 8-hour goal. Nights under 8h
+  are a different color.
+- A table with each night's bed, wake, total time, and bedtime vs plan.
 
 Sleep is logged by hand. A web app can't read the phone's sleep sensors, so
 fully automatic tracking would need a native app.

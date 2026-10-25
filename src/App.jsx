@@ -60,7 +60,7 @@ function App() {
       </nav>
 
       {page === 'stats' ? (
-        <SleepStats log={sleepLog} />
+        <SleepStats log={sleepLog} events={events} campus={campus} />
       ) : (
         <>
           <SleepLog log={sleepLog} onSave={saveNight} onDelete={deleteNight} />

@@ -1,6 +1,6 @@
 // One day of the week: its events, the "going to campus?" question, and the
 // bedtime / wake / leave plan.
-import { formatTime, planDay, toMinutes } from './plan.js'
+import { campusChoice, formatTime, planDay, toMinutes } from './plan.js'
 
 function DayCard({ day, events, goingToCampus, onCampusChange, onDelete, sleepStatus }) {
   // No events: no plan, show how sleep has been going instead.
@@ -14,8 +14,7 @@ function DayCard({ day, events, goingToCampus, onCampusChange, onDelete, sleepSt
   }
 
   // In-person days default to "yes". Online-only days wait for an answer.
-  const hasInPerson = events.some((e) => e.mode === 'in-person')
-  const campus = goingToCampus ?? (hasInPerson ? true : null)
+  const campus = campusChoice(events, goingToCampus)
   const plan = campus === null ? null : planDay(events, campus)
 
   const sorted = [...events].sort((a, b) => toMinutes(a.startTime) - toMinutes(b.startTime))

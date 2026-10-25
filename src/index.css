@@ -116,9 +116,9 @@ button.link {
   margin-bottom: 8px;
 }
 
+/* Two per row, so four boxes make a 2x2 grid on a phone. */
 .tile {
-  flex: 1;
-  min-width: 90px;
+  flex: 1 1 40%;
   display: flex;
   flex-direction: column;
   gap: 4px;

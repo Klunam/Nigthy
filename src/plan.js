@@ -39,6 +39,14 @@ function earliest(events) {
   )
 }
 
+// The "going to campus?" answer for a day. Uses the user's answer if there is
+// one; otherwise in-person days default to true and online-only days to null
+// (not answered yet).
+export function campusChoice(dayEvents, answer) {
+  if (answer !== undefined) return answer
+  return dayEvents.some((event) => event.mode === 'in-person') ? true : null
+}
+
 // Works out one day's plan.
 // dayEvents: that day's events, e.g. [{ type, mode, day, startTime }]
 // goingToCampus: true or false

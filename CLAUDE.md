@@ -145,6 +145,11 @@ Don't build any of these until the MVP is done and I ask.
 - Sleep stats page works: `src/SleepStats.jsx` (average / total / nights at
   8h+ tiles, CSS bar chart of last 7 nights with an 8h goal line, short nights
   in amber with a legend and hours on each bar, table).
+  - Sleep debt = sum of `max(0, goal − slept)` over the last 7 nights
+    (`weekSummary().debt` in `src/sleep.js`).
+  - Bedtime vs plan = actual bedtime − planned bedtime for the day the user
+    woke up (`bedtimeVsPlan` in `src/sleep.js`), kept within ±12h. Uses
+    `campusChoice` from `src/plan.js`, the same default rule as `DayCard`.
 - Colors live as CSS variables at the top of `src/index.css` (midnight blue
   theme). Chart colors were checked for contrast and colorblind safety. `App.jsx` switches
   between "plan" and "stats" with a `page` state (no router).
