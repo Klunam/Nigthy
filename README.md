@@ -32,6 +32,24 @@ The user adds their events. Each event has:
 For each day, the app shows a **bedtime**, **wake time**, and, on campus days,
 a **leave time**.
 
+**Paste your schedule:** instead of adding events one at a time, the user can
+paste their whole schedule, one class or shift per line. The app shows a
+preview first, then adds everything with one tap. It understands lines like:
+
+```
+Mon & Wens CMP 410 - 10AM - 11:40AM In person
+Tuesday & Thursdays CMP 408: 6:00PM - 7:40PM Virtual
+MoWe 9:00AM - 10:15AM
+```
+
+- Days: full names, short names, plurals, and CUNYfirst codes like `MoWe`.
+- Time: the first time with `:` or AM/PM is the start time. Course numbers
+  like `410` are ignored.
+- Mode: "Virtual", "Online", "Remote", or "Zoom" means online. No mode written
+  means in-person, and the preview marks it "(assumed)".
+- Lines it can't read are listed so the user can fix them. Pasting the same
+  schedule twice doesn't create duplicates.
+
 ### 2. Sleep log
 
 The user logs the date they woke up, when they went to bed, and when they woke

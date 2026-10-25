@@ -97,6 +97,32 @@ button.link {
   font-weight: 600;
 }
 
+/* Paste-your-schedule box: click the heading to open or close it. */
+summary {
+  cursor: pointer;
+}
+
+summary h2 {
+  display: inline;
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  padding: 8px 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--input);
+  color: inherit;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* Demo: a notice at the top and a big Skip button at the bottom. */
 .demo-banner {
   border: 1px solid var(--accent);

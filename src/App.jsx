@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react'
 import DayCard from './DayCard.jsx'
 import EventForm from './EventForm.jsx'
+import ScheduleImport from './ScheduleImport.jsx'
 import SleepLog from './SleepLog.jsx'
 import SleepStats from './SleepStats.jsx'
 import { DEMO_CAMPUS, DEMO_EVENTS, DEMO_SLEEP } from './demo.js'
@@ -64,6 +65,15 @@ function App() {
     setEvents([...events, { ...event, id: Date.now() }])
   }
 
+  // Add many events at once (from a pasted schedule). Skips any that are
+  // already there, so pasting the same schedule twice doesn't double it.
+  function addEvents(newEvents) {
+    const isSame = (a, b) =>
+      a.day === b.day && a.startTime === b.startTime && a.type === b.type && a.mode === b.mode
+    const fresh = newEvents.filter((n) => !events.some((e) => isSame(e, n)))
+    setEvents([...events, ...fresh.map((event, i) => ({ ...event, id: Date.now() + i }))])
+  }
+
   function deleteEvent(id) {
     setEvents(events.filter((event) => event.id !== id))
   }
@@ -106,6 +116,8 @@ function App() {
       ) : (
         <>
           <SleepLog log={sleepLog} onSave={saveNight} onDelete={deleteNight} />
+
+          <ScheduleImport onAddAll={addEvents} />
 
           <EventForm onAdd={addEvent} />
 

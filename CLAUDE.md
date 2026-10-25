@@ -152,6 +152,11 @@ Don't build any of these until the MVP is done and I ask.
   - Bedtime vs plan = actual bedtime − planned bedtime for the day the user
     woke up (`bedtimeVsPlan` in `src/sleep.js`), kept within ±12h. Uses
     `campusChoice` from `src/plan.js`, the same default rule as `DayCard`.
+- Schedule import (paste text): `src/importSchedule.js` (`parseSchedule`
+  returns `{ events, problems }`; plain JS) and `src/ScheduleImport.jsx`
+  (paste box + preview). `App.addEvents` skips duplicates. A number is only
+  a time if it has `:` or AM/PM. No mode written → in-person, marked
+  `modeGuessed` for the preview only (not saved).
 - First-time demo: `src/demo.js` holds sample events, campus answers, and
   nights. `App.jsx` starts in demo mode only if `nigthy-demo-seen` isn't set
   and nothing is saved yet. In demo mode the save effects are skipped.
