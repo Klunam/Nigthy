@@ -34,9 +34,11 @@ a **leave time**.
 
 ### 2. Sleep log
 
-The user logs when they went to bed and when they woke up. The app shows how
-many hours they slept and compares it to the 8-hour goal. The log is saved on
-the device, so it's still there after closing the app.
+The user logs the date they woke up, when they went to bed, and when they woke
+up. The app shows how long each night was, plus a summary of the last 7
+nights: the average and how many hit the 8-hour goal. Logging the same date
+again replaces that night. The log is saved on the device, so it's still there
+after closing the app.
 
 ## How the plan is calculated
 

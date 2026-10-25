@@ -2,12 +2,13 @@
 // bedtime / wake / leave plan.
 import { formatTime, planDay, toMinutes } from './plan.js'
 
-function DayCard({ day, events, goingToCampus, onCampusChange, onDelete }) {
+function DayCard({ day, events, goingToCampus, onCampusChange, onDelete, sleepStatus }) {
+  // No events: no plan, show how sleep has been going instead.
   if (events.length === 0) {
     return (
       <section className="card">
         <h2>{day}</h2>
-        <p className="muted">No events. Sleep log status will show here.</p>
+        <p className="muted">No events. {sleepStatus}</p>
       </section>
     )
   }

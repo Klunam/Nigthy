@@ -137,8 +137,12 @@ Don't build any of these until the MVP is done and I ask.
     `nigthy-campus`)
   - `src/App.jsx`: holds events + campus answers; `src/EventForm.jsx` adds
     events; `src/DayCard.jsx` shows one day and its plan
-- Not built yet: the sleep log (no-event days show a placeholder for it) and
-  PWA setup.
+- MVP feature 2 (sleep log) works:
+  - `src/sleep.js`: sleep math (`minutesSlept`, `describeStatus`, ...)
+  - `src/SleepLog.jsx`: log form, 7-night summary, recent nights list
+  - saved under localStorage key `nigthy-sleep`, one entry per date
+  - no-event days show the 7-night summary
+- Not built yet: PWA setup (installable on Android) and deploying.
 
 ## Commands
 
