@@ -112,7 +112,10 @@ online event instead.
 ## Tech stack
 
 - **Vite + React**: builds the web app.
-- **PWA**: lets the app be installed on an Android phone like a normal app.
+- **PWA**: lets the app be installed on an Android phone like a normal app,
+  and open with no internet (useful underground on the train). It uses a
+  manifest (name, icon, colors) and a small service worker that saves the
+  app's files on the phone.
 - **localStorage**: saves events and the sleep log in the browser, with no
   server or account needed.
 - Deployed to a live URL (link to be added).

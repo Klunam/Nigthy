@@ -155,7 +155,14 @@ Don't build any of these until the MVP is done and I ask.
 - Colors live as CSS variables at the top of `src/index.css` (midnight blue
   theme). Chart colors were checked for contrast and colorblind safety. `App.jsx` switches
   between "plan" and "stats" with a `page` state (no router).
-- Not built yet: PWA setup (installable on Android) and deploying.
+- PWA setup done (hand-written, no plugin):
+  - `public/manifest.webmanifest`: name, colors, icons for install
+  - `public/sw.js`: service worker, network-first with a cache fallback so the
+    app opens offline. Registered in `src/main.jsx` only in production builds.
+    Bump `CACHE` (e.g. `nigthy-v2`) if caching ever needs a fresh start.
+  - `public/icon.svg` is the source icon; `icon-192.png` / `icon-512.png` were
+    made from it with `sips` (macOS)
+- Not built yet: deploying to a live URL (install on Android needs https).
 - Idea for later: one-tap "Going to bed" / "I'm awake" buttons to make
   logging faster. Automatic tracking isn't possible from a web app.
 

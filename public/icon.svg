@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Midnight blue background with a crescent moon and one star. -->
+  <rect width="512" height="512" fill="#0b1530"/>
+  <circle cx="240" cy="270" r="120" fill="#e8ecf5"/>
+  <circle cx="296" cy="226" r="104" fill="#0b1530"/>
+  <circle cx="360" cy="160" r="14" fill="#3987e5"/>
+</svg>
