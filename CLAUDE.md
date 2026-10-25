@@ -128,11 +128,14 @@ Don't build any of these until the MVP is done and I ask.
 
 ## Current status
 
-- CLAUDE.md and README.md (the graded spec) exist. The app has **not** been
-  scaffolded yet. Keep README.md in sync if the planning rules change.
-- Don't scaffold or create app files until I ask.
+- README.md is the graded spec. Keep it in sync if the planning rules change.
+- The Vite + React app is set up with a placeholder screen (`src/App.jsx`).
+  PWA setup, the daily plan, and the sleep log are not built yet.
 
 ## Commands
 
-_To be filled in once the Vite app is scaffolded (e.g. `npm run dev`,
-`npm run build`, `npm run preview`)._
+- `npm install`: download the libraries the app needs (run once).
+- `npm run dev`: start the app locally to try it in the browser.
+- `npm run build`: make the final version for deploying (goes in `dist/`).
+- `npm run preview`: try the built version locally.
+- `npm run lint`: check the code for common mistakes (uses oxlint).

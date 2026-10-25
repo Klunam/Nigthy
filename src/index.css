@@ -1,0 +1,13 @@
+/* Styles for the whole app. Kept small on purpose. */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #0f1226;
+  color: #e8e8f0;
+}
+
+main {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px;
+}
